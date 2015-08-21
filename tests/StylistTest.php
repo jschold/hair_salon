@@ -39,6 +39,17 @@
             $this->assertEquals($test_stylist,  $result[0]);
         }
 
+        function test_update()
+        {
+            $name = "Megan";
+            $id = null;
+            $test_stylist = new Stylist($name, $id);
+            $test_stylist->save();
+            $new_name = "Megan Clough";
+            $test_stylist->update($new_name);
+            $this->assertEquals("Megan Clough", $test_stylist->getName());
+        }
+
         function test_getAll()
         {
             $name = "Megan";
