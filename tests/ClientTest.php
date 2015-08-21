@@ -62,6 +62,25 @@
             $this->assertEquals($test_client, $result[0]);
         }
 
+        function test_update()
+        {
+            $name = "Megan";
+            $id = null;
+            $test_stylist = new Stylist($name, $id);
+            $test_stylist->save();
+
+            $client_name = "Shawnee";
+            $stylist_id = $test_stylist->getId();
+            $test_client = new Client($id, $client_name, $stylist_id);
+            $test_client->save();
+
+            $new_client_name = "Katie Saccomanno";
+
+            $test_client->update($new_client_name);
+
+            $this->assertEquals("Katie Saccomanno", $test_client->getClientName());
+        }
+
         function test_getAll()
         {
             $name = "Megan";
