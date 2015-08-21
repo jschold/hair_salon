@@ -5,9 +5,9 @@
     </head>
     <body>
         <div class='container'>
-            <img src="hairmetal.jpg" style='position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:-1;'>
 
-            <h1>Update {{ stylist.GetName}} </h1>
+        <h1>Update {{ stylist.GetName}} </h1>
+        <br>
 
         <form action="/stylists/{{ stylist.getId }}" method='post'>
             <input name='_method' type='hidden' value='patch'>

@@ -25,7 +25,10 @@
                 <h2><p>Click on a stylist's name to see their list of clients:</p><h2>
                 <h3><ul>
                     {% for stylist in stylists %}
-                        <li><a href="/stylists/{{ stylist.getId }}">{{ stylist.getName }}</a>
+                    <form action='/stylists/{{ stylist.getId }}' method='post'>
+                    <input name='_method' type='hidden' value='delete'>
+                    <li><h4><a href="/stylists/{{ stylist.getId }}">{{ stylist.getName }}</a>
+                        <a class="btn btn-danger" href="/stylists/{{ stylist.getId }}/edit" role="button">Edit or Delete</a>
                     {% endfor %}
                 </ul></h3>
                 <br>
