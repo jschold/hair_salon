@@ -1,6 +1,6 @@
-# _Best Restaurants_
+# _Hair Salon_
 
-##### _App where users can add restaurants by the type of cuisine they offer, 8-21-15_
+##### _App where users can add hair stylists and their clients, 8-21-15_
 
 #### By _**Jenna Navratil**_
 
