@@ -1,23 +1,13 @@
 <?php
   class Stylist
   {
-      private $name;
       private $id;
+      private $name;
 
-        function __construct($name, $id = null)
+        function __construct($id = null, $name)
         {
-          $this->name = $name;
           $this->id = $id;
-        }
-
-        function setName($new_name)
-        {
-          $this->name = (string) $new_name;
-        }
-
-        function getName()
-        {
-          return $this->name;
+          $this->name = $name;
         }
 
         function setId($new_id)
@@ -28,6 +18,16 @@
         function getId()
         {
           return $this->id;
+        }
+
+        function setName($new_name)
+        {
+          $this->name = (string) $new_name;
+        }
+
+        function getName()
+        {
+          return $this->name;
         }
 
         function save()
@@ -46,7 +46,7 @@
         function delete()
         {
             $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->getId()};");
-            // $GLOBALS['DB']->exec("DELETE FROM clients WHERE cuisine_id = {$this->getId()};");
+            $GLOBALS['DB']->exec("DELETE FROM clients WHERE cuisine_id = {$this->getId()};");
         }
 
         static function getAll()
@@ -54,9 +54,9 @@
           $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");
           $stylists = array();
           foreach($returned_stylists as $stylist) {
-              $name = $stylist['name'];
               $id = $stylist['id'];
-              $new_stylist = new Stylist($name, $id);
+              $name = $stylist['name'];
+              $new_stylist = new Stylist($id, $name);
               array_push($stylists, $new_stylist);
           }
           return $stylists;

@@ -16,6 +16,7 @@
         protected function tearDown()
         {
             Stylist::deleteAll();
+            Client::deleteAll();
         }
 
         function test_getName()
@@ -43,7 +44,7 @@
         {
             $name = "Megan";
             $id = null;
-            $test_stylist = new Stylist($name, $id);
+            $test_stylist = new Stylist($id, $name);
             $test_stylist->save();
             $new_name = "Megan Clough";
             $test_stylist->update($new_name);
@@ -54,10 +55,10 @@
         {
             $name = "Megan";
             $id = null;
-            $test_stylist = new Stylist($name, $id);
+            $test_stylist = new Stylist($id, $name);
             $test_stylist->save();
             $name2 = "Felicia";
-            $test_stylist2 = new Stylist($name2, $id);
+            $test_stylist2 = new Stylist($id, $name2);
             $test_stylist2->save();
             $test_stylist->delete();
             $this->assertEquals([$test_stylist2], Stylist::getAll());
