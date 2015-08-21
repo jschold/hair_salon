@@ -8,7 +8,7 @@
             <h1>View and Add Clients For {{ stylist.GetName }}</h1>
 
             <p>Enter a client:</p>
-
+            <!--New Clients Won't Save!! -->
             <form action='/clients' method='post'>
                 <input id='stylist_id' class='form-control' name="stylist_id" type="hidden" value="{{ stylist.getId()}}">
                 <div class ='form-group'>

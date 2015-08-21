@@ -67,5 +67,19 @@
         {
             $GLOBALS['DB']->exec("DELETE FROM clients;");
         }
+
+        static function find($search_id)
+        {
+            $found_client = null;
+            $clients= client::getAll();
+            foreach(clients as $client) {
+                $id = $client->getId();
+                if ($id == $search_id) {
+                    $found_client = $client;
+                }
+            }
+            return $found_client;
+        }
     }
+
 ?>
