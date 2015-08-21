@@ -50,6 +50,19 @@
             $this->assertEquals("Megan Clough", $test_stylist->getName());
         }
 
+        function test_delete()
+        {
+            $name = "Megan";
+            $id = null;
+            $test_stylist = new Stylist($name, $id);
+            $test_stylist->save();
+            $name2 = "Felicia";
+            $test_stylist2 = new Stylist($name2, $id);
+            $test_stylist2->save();
+            $test_stylist->delete();
+            $this->assertEquals([$test_stylist2], Stylist::getAll());
+        }
+
         function test_getAll()
         {
             $name = "Megan";
