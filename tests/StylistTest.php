@@ -6,12 +6,12 @@
 
     require_once "src/Stylist.php";
 
-    $server = 'mysql:host=192.168.0.33;port=8889; dbname=hair_salon_test';
+    $server = 'mysql:host=localhost; dbname=hair_salon_test';
     $username = 'root';
     $password = 'root';
     $DB = new PDO($server, $username, $password);
 
-    class Stylist extends PHPUnit_Framework_TestCase
+    class StylistTest extends PHPUnit_Framework_TestCase
     {
         protected function tearDown()
         {
