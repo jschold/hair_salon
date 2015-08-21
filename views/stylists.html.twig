@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Hair Metal</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class='container'>
+            <h1>View and Add Clients For {{ stylist.GetName }}</h1>
+
+            <p>Enter a client:</p>
+
+            <form action='/stylists' method='post'>
+                <input id='stylist_id' class='form-control' name="stylist_id" type="hidden" value="{{ stylist.getId()}}">
+                <div class ='form-group'>
+                    <label for='client_name'></label>
+                    <input id='client_name' class='form-control' placeholder='Client Name' name='client_name' type='text'>
+                    <br>
+                    <button type='submit' class='btn btn-danger'>Add Client</button>
+                    <a class="btn btn-danger" href="/" role="button">Home</a>
+                </div>
+            </form>
+
+            {% if clients is not empty %}
+                <p>Here are {{ stylist.GetName }}'s clients:</p>
+                <ul>
+                    {% for client in clients %}
+                        <li>{{ client.getClientName }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </body>
+</html>
