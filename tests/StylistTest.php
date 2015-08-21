@@ -41,11 +41,33 @@
             $this->assertEquals($test_stylist,  $result[0]);
         }
 
+        function test_getClients()
+        {
+            $name = "Megan";
+            $id = null;
+            $test_stylist = new Stylist($name, $id);
+            $test_stylist->save();
+
+            $stylist_id = $test_stylist->getId();
+
+            $client_name = "Shawnee";
+            $test_client = new Client($id, $client_name, $stylist_id);
+            $test_client->save();
+
+            $client_name2 = "Katie";
+            $test_client2 = new Client($id, $client_name, $stylist_id);
+            $test_client2->save();
+
+            $result = $test_stylist->getClients();
+
+            $this->assertEquals([$test_client, $test_client2], $result);
+        }
+
         function test_update()
         {
             $name = "Megan";
             $id = null;
-            $test_stylist = new Stylist($id, $name);
+            $test_stylist = new Stylist($name, $id);
             $test_stylist->save();
             $new_name = "Megan Clough";
             $test_stylist->update($new_name);
@@ -56,10 +78,10 @@
         {
             $name = "Megan";
             $id = null;
-            $test_stylist = new Stylist($id, $name);
+            $test_stylist = new Stylist($name, $id);
             $test_stylist->save();
             $name2 = "Felicia";
-            $test_stylist2 = new Stylist($id, $name2);
+            $test_stylist2 = new Stylist($name2, $id);
             $test_stylist2->save();
             $test_stylist->delete();
             $this->assertEquals([$test_stylist2], Stylist::getAll());

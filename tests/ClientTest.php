@@ -87,11 +87,11 @@
 
             $client_name = "Shawnee";
             $id = null;
-            $test_client = new Client($client_name);
+            $test_client = new Client($id, $client_name, $stylist_id);
             $test_client->save();
 
             $client_name2 = "Katie";
-            $test_client2 = new Client($client_name);
+            $test_client2 = new Client($id, $client_name, $stylist_id);
             $test_client2->save();
 
             $test_client->delete();
