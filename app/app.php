@@ -30,6 +30,10 @@
         return $app['twig']->render('stylists.html.twig', array('clients' => Client::getAll()));
     });
 
+    $app->get("/stylists", function() use ($app) {
+        return $app['twig']->render('stylists.html.twig', array('stylists' => Stylists::getAll()));
+    });
+
     $app->get("/stylists/{id}", function($id) use ($app) {
         $stylist = Stylist::find($id);
         return $app['twig']->render('stylists.html.twig', array('stylist' => $stylist, 'clients' => $stylist->getClients()));
@@ -58,8 +62,13 @@
 
     $app->post("/delete_stylists", function() use ($app) {
             Stylist::deleteAll();
-            return $app['twig']->render('delete.html.twig', array('stylists' => Stylist::getAll()));
+            return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
         });
+
+    $app->post("/delete_clients", function() use ($app) {
+        Client::deleteAll();
+        return $app['twig']->render('stylists.html.twig', array('clients' => Client::getAll()));
+    });
 
     $app->patch("/stylists/{id}", function($id) use ($app) {
         $name = $_POST['name'];
