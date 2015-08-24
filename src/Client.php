@@ -1,5 +1,6 @@
 <?php
     class Client
+    //id and client name were accidentally switched when adding the table, so the order does not match the order in the Stylist class, but that doesn't interfere with how things are functioning. It just doesn't look uniform.
     {
         private $id;
         private $client_name;
